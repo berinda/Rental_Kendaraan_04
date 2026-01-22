@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->string('gambar'); 
             $table->string('nama_customer');    
             $table->string('nik');
             $table->string('merk'); 
             $table->string('tanggal_pesan');     
             $table->string('tanggal_kembali');
             $table->string('jumlah');
-            $table->string('gambar'); 
             $table->unsignedBigInteger('CarId');
             $table->timestamps();
 

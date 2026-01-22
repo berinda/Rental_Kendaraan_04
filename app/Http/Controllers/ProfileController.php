@@ -45,7 +45,7 @@ class ProfileController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'nik'       =>'required',
+            'nik'       =>'required|min:10',
             'nama'      =>'required',
             'email'      =>'required'
         ]);

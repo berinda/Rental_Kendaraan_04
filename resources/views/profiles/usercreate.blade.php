@@ -54,10 +54,9 @@
                                     </div>
                                 @enderror
                             </div>
-
-                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                            <button type="reset" class="btn btn-md btn-warning">RESET</button>
-                            
+                            {{-- <a href="{{ route('profiles.userindex') }}" class="btn btn-outline-danger">KEMBALI</a> --}}
+                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>                            
+                            {{-- <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>                             --}}
                         </form> 
                     </div>
                 </div>

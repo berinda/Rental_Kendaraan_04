@@ -85,21 +85,9 @@
                                     <label for="status" class="form-label">STATUS :</label>
                                     <br><input type="radio" name="status" value="tersedia" required="" /> TERSEDIA
                                     <br><input type="radio" name="status" value="tidaktersedia" required="" /> TIDAK TERSEDIA
-                                
+                                </div>
                                 <!-- error message untuk title -->
                                 @error('status')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="font-weight-bold">NO SERI</label>
-                                <input type="text" class="form-control @error('no_seri') is-invalid @enderror" name="no_seri" value="{{ old('no_seri') }}" placeholder="Masukkan No Seri Mobil">
-                                
-                                <!-- error message untuk title -->
-                                @error('no_seri')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
@@ -118,9 +106,19 @@
                                     </div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                            <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                            <div class="form-group">
+                                <label class="font-weight-bold">NO SERI</label>
+                                <input type="text" class="form-control @error('no_seri') is-invalid @enderror" name="no_seri" value="{{ old('no_seri') }}" placeholder="Masukkan No Seri Mobil">
+                                
+                                <!-- error message untuk title -->
+                                @error('no_seri')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                             
+                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>                            
                         </form> 
                     </div>
                 </div>

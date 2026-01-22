@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Rent Car</h3>      
+                    <h3 class="text-center my-4">RENT CAR</h3>      
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
@@ -25,15 +27,7 @@
                                 <ul class="nav nav-tabs">
                                         <!-- Navbar content -->
                                         <a href="{{ route('profiles.create') }}" class="btn btn-outline-danger">TAMBAH</a>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="/cars">Car</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="/bookings">Booking</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link active" href="/profiles">Profile</a>
-                                        </li>
+                                       
                                       </ul>
                                     </nav>
                         <table class="table table-bordered">
@@ -55,7 +49,6 @@
 
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('profiles.destroy', $profile->id) }}" method="POST">
-                                            <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
@@ -92,6 +85,6 @@
             
         @endif
     </script>
-
+@endsection
 </body>
 </html>

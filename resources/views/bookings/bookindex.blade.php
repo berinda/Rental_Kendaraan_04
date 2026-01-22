@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Rent Car</h3>      
+                    <h3 class="text-center my-4">RENT CAR</h3>      
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
@@ -25,28 +27,20 @@
                                 <ul class="nav nav-tabs">
                                         <!-- Navbar content -->
                                         <a href="{{ route('bookings.create') }}" class="btn btn-outline-danger">TAMBAH</a>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="/cars">Car</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link active" href="/bookings">Booking</a>
-                                        </li>
-                                        <li class="nav-item">
-                                          <a class="nav-link" href="/profiles">Profile</a>
-                                        </li>
+                                        
                                       </ul>
                                     </nav>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
+                                  <th scope="col">Gambar</th>
                                 <th scope="col">Nama Customer</th>
-                                <th scope="col">NIK</th>
+                                <th scope="col">Nik</th>
                                 <th scope="col">Merk</th>
-                                <th scope="col">Tanggal pesan</th>
+                                <th scope="col">Tanggal Pesan</th>
                                 <th scope="col">Tanggal Kembali</th>
                                 <th scope="col">Jumlah</th>
                                 <th scope="col">Tipe</th>
-                                <th scope="col">Gambar</th>
                                 <th scope="col">Aksi</th>
                               </tr>
                             </thead>
@@ -62,12 +56,11 @@
                                     <td>{{ $booking-> tanggal_pesan }}</td>
                                     <td>{{ $booking-> tanggal_kembali }}</td>
                                     <td>{{ $booking-> jumlah }}</td>
-                                    <td>{{ $booking-> gambar }}</td>
                                     <td>{{ $booking-> Car-> tipe }}</td>
 
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('bookings.destroy', $booking->id) }}" method="POST">
-                                            <a href="{{ route('bookings.bookedit', $booking->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                            <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
@@ -104,6 +97,6 @@
             
         @endif
     </script>
-
+@endsection
 </body>
 </html>

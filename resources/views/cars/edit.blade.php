@@ -32,7 +32,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">MERK</label>
-                                <input type="text" class="form-control @error('merk') is-invalid @enderror" name="merk" value="{{ old('merk') }}" placeholder="Masukkan Merk Mobil">
+                                <input type="text" class="form-control @error('merk') is-invalid @enderror" name="merk" value="{{ old('merk', $cars->merk) }}" placeholder="Masukkan Merk Mobil">
                             
                                 <!-- error message untuk title -->
                                 @error('merk')
@@ -45,7 +45,7 @@
                             
                             <div class="form-group">
                                 <label class="font-weight-bold">TIPE</label>
-                                <input type="text" class="form-control @error('tipe') is-invalid @enderror" name="tipe" value="{{ old('tipe') }}" placeholder="Masukkan Tipe Mobil">
+                                <input type="text" class="form-control @error('tipe') is-invalid @enderror" name="tipe" value="{{ old('tipe', $cars->tipe) }}" placeholder="Masukkan Tipe Mobil">
                                 
                                 <!-- error message untuk title -->
                                 @error('tipe')
@@ -57,7 +57,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">STOCK</label>
-                                <input type="text" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock') }}" placeholder="Masukkan Stock Mobil">
+                                <input type="text" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock', $cars->stock) }}" placeholder="Masukkan Stock Mobil">
                             
                                 <!-- error message untuk title -->
                                 @error('stock')
@@ -69,7 +69,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">WARNA</label>
-                                <input type="text" class="form-control @error('warna') is-invalid @enderror" name="warna" value="{{ old('warna') }}" placeholder="Masukkan Warna Mobil">
+                                <input type="text" class="form-control @error('warna') is-invalid @enderror" name="warna" value="{{ old('warna', $cars->warna) }}" placeholder="Masukkan Warna Mobil">
                                 
                                 <!-- error message untuk title -->
                                 @error('warna')
@@ -92,9 +92,20 @@
                             @enderror
                         </div>
                             
+                        <div class="form-group">
+                            <label class="font-weight-bold">DESKRIPSI</label>
+                            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" value="{{ old('deskripsi', $cars->deskripsi) }}" placeholder="Masukkan Deskripsi Mobil">
+                        
+                            <!-- error message untuk content -->
+                            @error('deskripsi')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                             <div class="form-group">
                                 <label class="font-weight-bold">NO SERI</label>
-                                <input type="text" class="form-control @error('no_seri') is-invalid @enderror" name="no_seri" value="{{ old('no_seri') }}" placeholder="Masukkan No Seri Mobil">
+                                <input type="text" class="form-control @error('no_seri') is-invalid @enderror" name="no_seri" value="{{ old('no_seri', $cars->no_seri) }}" placeholder="Masukkan No Seri Mobil">
                                 
                                 <!-- error message untuk title -->
                                 @error('no_seri')
@@ -104,21 +115,8 @@
                                 @enderror
                             </div>
                             
-                            <div class="form-group">
-                                <label class="font-weight-bold">DESKRIPSI</label>
-                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="5" placeholder="Masukkan Deskripsi Mobil">{{ old('deskripsi') }}</textarea>
-                            
-                                <!-- error message untuk content -->
-                                @error('deskripsi')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
 
                             <button type="submit" class="btn btn-md btn-outline-primary">UPDATE</button>
-                            <button type="reset" class="btn btn-md btn-outline-warning">RESET</button>
-
                         </form> 
                     </div>
                 </div>
@@ -129,8 +127,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace( 'deskripsi' );
-</script>
 </body>
 </html>

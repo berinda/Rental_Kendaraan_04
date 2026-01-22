@@ -14,14 +14,27 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('bookings.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('bookings.update', $bookings -> id) }}" method="POST" enctype="multipart/form-data">
                         
                             @csrf
+                            @method('put')
 
+                            
+                             <div class="form-group">
+                                 <label class="font-weight-bold">GAMBAR</label>
+                                 <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar">
+                             
+                                 <!-- error message untuk title -->
+                                 @error('gambar')
+                                     <div class="alert alert-danger mt-2">
+                                         {{ $message }}
+                                     </div>
+                                 @enderror
+                             </div>
                             
                             <div class="form-group">
                                 <label class="font-weight-bold">NAMA CUSTOMER</label>
-                                <input type="text" class="form-control @error('nama_customer') is-invalid @enderror" name="nama_customer" value="{{ old('nama_customer') }}" placeholder="Masukkan Nama Customer">
+                                <input type="text" class="form-control @error('nama_customer') is-invalid @enderror" name="nama_customer" value="{{ old('nama_customer', $bookings->nama_customer) }}" placeholder="Masukkan Nama Customer">
                             
                                 <!-- error message untuk title -->
                                 @error('nama_customer')
@@ -34,7 +47,7 @@
                             
                             <div class="form-group">
                                 <label class="font-weight-bold">NIK</label>
-                                <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik" value="{{ old('nik') }}" placeholder="Masukkan NIK Customer">
+                                <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik" value="{{ old('nik', $bookings->nik) }}" placeholder="Masukkan NIK Customer">
                                 
                                 <!-- error message untuk title -->
                                 @error('nik')
@@ -46,7 +59,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">MERK</label>
-                                <input type="text" class="form-control @error('merk') is-invalid @enderror" name="merk" value="{{ old('merk') }}" placeholder="Masukkan Merk Mobil">
+                                <input type="text" class="form-control @error('merk') is-invalid @enderror" name="merk" value="{{ old('merk', $bookings->merk) }}" placeholder="Masukkan Merk Mobil">
                                 
                                 <!-- error message untuk title -->
                                 @error('merk')
@@ -59,7 +72,7 @@
                             <div class="form-group">
                                 <div class="form-group">
                                     <label class="font-weight-bold">TANGGAL PESAN</label>
-                                    <input type="date" class="form-control @error('tanggal_pesan') is-invalid @enderror" name="tanggal_pesan" value="{{ old('tanggal_pesan') }}" placeholder="Masukkan Tanggal Pesan">
+                                    <input type="date" class="form-control @error('tanggal_pesan') is-invalid @enderror" name="tanggal_pesan" value="{{ old('tanggal_pesan', $bookings->tanggal_pesan) }}" placeholder="Masukkan Tanggal Pesan">
                                     
                                     <!-- error message untuk title -->
                                     @error('tanggal_pesan')
@@ -71,7 +84,7 @@
                             
                             <div class="form-group">
                                 <label class="font-weight-bold">TANGGAL KEMBALI</label>
-                                <input type="date" class="form-control @error('tanggal_kembali') is-invalid @enderror" name="tanggal_kembali" value="{{ old('tanggal_kembali') }}" placeholder="Masukkan Tanggal Kembali">
+                                <input type="date" class="form-control @error('tanggal_kembali') is-invalid @enderror" name="tanggal_kembali" value="{{ old('tanggal_kembali', $bookings->tanggal_kembali) }}" placeholder="Masukkan Tanggal Kembali">
                                 
                                 <!-- error message untuk title -->
                                 @error('tanggal_kembali')
@@ -80,32 +93,29 @@
                                 </div>
                                 @enderror
                             </div>
-                            
                             <div class="form-group">
                                 <label class="font-weight-bold">JUMLAH</label>
-                                <textarea class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" rows="5" placeholder="Masukkan Jumlah Sewa Mobil">{{ old('jumlah') }}</textarea>
+                                <input type="text" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" value="{{ old('jumlah', $bookings->jumlah) }}" placeholder="Masukkan Jumlah Sewa">
                                 
-                                <!-- error message untuk content -->
+                                <!-- error message untuk title -->
                                 @error('jumlah')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">GAMBAR</label>
-                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar">
-                            
-                                <!-- error message untuk title -->
-                                @error('gambar')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+
+                            <div class="mb-3">
+                                <label class="form-label" for="CarId"><b>TIPE</b></label><br>
+                                <select class="form-select" name="CarId" id="CarId">
+                                    <option selected>Pilih Tipe Mobil</option>
+                                    @foreach ($car as $Car)
+                                        <option value="{{ $Car->id }}">{{ $Car->tipe }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                            <button type="reset" class="btn btn-md btn-warning">RESET</button>
                             
+                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>                            
                         </form> 
                     </div>
                 </div>

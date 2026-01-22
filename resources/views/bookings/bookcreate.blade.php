@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body style="background: #D27685">
-
+    
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
@@ -18,6 +18,17 @@
                         
                             @csrf
 
+                            <div class="form-group">
+                                <label class="font-weight-bold">GAMBAR</label>
+                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar">
+                            
+                                <!-- error message untuk title -->
+                                @error('gambar')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                             
                             <div class="form-group">
                                 <label class="font-weight-bold">NAMA CUSTOMER</label>
@@ -92,20 +103,9 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                <label class="font-weight-bold">GAMBAR</label>
-                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar">
-                            
-                                <!-- error message untuk title -->
-                                @error('gambar')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="BarangId">TIPE</label>
+                                <label class="form-label" for="CarId"><b>TIPE</b></label><br>
                                 <select class="form-select" name="CarId" id="CarId">
                                     <option selected>Pilih Tipe Mobil</option>
                                     @foreach ($car as $Car)
@@ -114,9 +114,7 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                            <button type="reset" class="btn btn-md btn-warning">RESET</button>
-                            
+                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>                            
                         </form> 
                     </div>
                 </div>

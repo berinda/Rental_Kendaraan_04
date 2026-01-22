@@ -18,7 +18,13 @@ class CarController extends Controller
      * index
      *
      * @return View
-     */public function index(): View
+     * 
+     * 
+     */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+     public function index(): View
      {
         //get cars
         $cars = Car::latest()->paginate(5);
@@ -44,7 +50,7 @@ class CarController extends Controller
     public function store(Request $request): RedirectResponse
     {
         //validate form
-        $this->validate($request, [
+        $this->validate($request,[
             'gambar'    =>'required|mimes:jpeg,jpg,png|max:2048',
             'tipe'      =>'required',
             'merk'      =>'required',
@@ -67,7 +73,7 @@ class CarController extends Controller
             'stock'     =>$request->stock,
             'warna'     =>$request->warna,
             'status'    =>$request->status,
-            'deskripsi' =>$request->status,
+            'deskripsi' =>$request->deskripsi,
             'no_seri'   =>$request->no_seri
         ]);
 
@@ -139,14 +145,19 @@ class CarController extends Controller
             'stock'     =>$request->stock,
             'warna'     =>$request->warna,
             'status'    =>$request->status,
-            'deskripsi' =>$request->status,
+            'deskripsi' =>$request->deskripsi,
             'no_seri'   =>$request->no_seri
             ]);
         }else{
             //update post without image
             $car->update([
-                'status'       =>$request->status,
-                'merk'        =>$request->merk
+            'tipe'      =>$request->tipe,
+            'merk'      =>$request->merk,
+            'stock'     =>$request->stock,
+            'warna'     =>$request->warna,
+            'status'    =>$request->status,
+            'deskripsi' =>$request->deskripsi,
+            'no_seri'   =>$request->no_seri
             ]);
         }
 

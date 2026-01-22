@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-use App\Models\Booking;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,18 +15,18 @@ class Booking extends Model
      * @var array
      */
     protected $fillable = [
+            'gambar' ,
             'nama_customer',    
             'nik',     
             'merk',     
             'tanggal_pesan',     
             'tanggal_kembali',
             'jumlah' ,
-            'gambar' ,
             'CarId'
     ];
        
     public function Car()
     {
-    return $this->belolngsTo(cars::class, 'CarId');
+    return $this->BelongsTo(Car::class, 'CarId');
     }
 }
